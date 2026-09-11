@@ -1,0 +1,37 @@
+name: Validar aplicação
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Aplica o princípio do menor privilégio ao token automático do workflow.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Lint, tipos e build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Validar o projeto
+        run: npm run check

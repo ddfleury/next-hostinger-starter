@@ -1,0 +1,34 @@
+# Dependências
+/node_modules
+
+# Arquivos gerados pelo Next.js
+/.next/
+/out/
+
+# Build e cobertura de testes
+/build/
+/coverage/
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Hostinger: não versionar arquivos gerados no servidor
+.htaccess
